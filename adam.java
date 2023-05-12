@@ -18,13 +18,13 @@ public class adam extends Actor
      */
     public void act()
     {
-        if(Greenfoot.isKeyDown("right")) move(3);
+        if(Greenfoot.isKeyDown("d")) move(3);
         turn(90);
-        if(Greenfoot.isKeyDown("down")) move(3);
+        if(Greenfoot.isKeyDown("s")) move(3);
         turn(90);
-        if(Greenfoot.isKeyDown("left")) move(3);
+        if(Greenfoot.isKeyDown("a")) move(3);
         turn(90);
-        if(Greenfoot.isKeyDown("up")) move(3);
+        if(Greenfoot.isKeyDown("w")) move(3);
         turn(90);
         hitpadda();
         fireOnCommand();
@@ -40,12 +40,14 @@ public class adam extends Actor
         {
             World myWorld = getWorld();
             GameOver gameover = new GameOver();
+            myWorld.addObject(gameover, myWorld.getWidth()/2, myWorld.getHeight()/2);
             myWorld.removeObject(this);
         }
     }
     public void fireOnCommand()
     {
-        if(Greenfoot.isKeyDown("f"))
+        MouseInfo mouseInfo = Greenfoot.getMouseInfo();
+        if(mouseInfo != null && mouseInfo.getButton() ==1)
         {
             World myWorld = getWorld();
             myWorld.addObject(love, 0, 0);
